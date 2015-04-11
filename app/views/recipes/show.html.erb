@@ -9,9 +9,11 @@
   </div>
   <br>
   <br>
-  <%= link_to "Edit recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
-
+  <% if logged_in? and @recipe.chef == current_user %>
+    <%= link_to "Edit recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
+  <% end %>
   <div class="col-lg-8 well">
+    
       <h3><%= @recipe.summary %></h3>
       <div class="pull-right">
         <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
